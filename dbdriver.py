@@ -1,9 +1,11 @@
 import psycopg2
 import config
+import os
 
 
 class UserStatus():
-    conn = psycopg2.connect("host='localhost' dbname='telegram_bot_db' user='pythonspot' password='111111'")
+    # conn = psycopg2.connect("host='localhost' dbname='telegram_bot_db' user='pythonspot' password='111111'")
+    conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
     conn.set_client_encoding('UTF8')
     cur = conn.cursor()
     sql = "CREATE TABLE IF NOT EXISTS user_state (id SERIAL PRIMARY KEY, user_id VARCHAR(20), " \
@@ -71,7 +73,8 @@ class UserStatus():
 
 
 class Loaders:
-    conn = psycopg2.connect("host='localhost' dbname='telegram_bot_db' user='pythonspot' password='111111'")
+    # conn = psycopg2.connect("host='localhost' dbname='telegram_bot_db' user='pythonspot' password='111111'")
+    conn = psycopg2.connect(os.environ['DATABASE_URL'], sslmode='require')
     conn.set_client_encoding('UTF8')
     cur = conn.cursor()
     sql = "CREATE TABLE IF NOT EXISTS loaders (id SERIAL PRIMARY KEY, user_id VARCHAR(20) UNIQUE, " \
