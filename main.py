@@ -115,6 +115,7 @@ def choose_district(message):
 
 @bot.message_handler(func=lambda message: user.get_status(message.chat.id) == config.ENTER_SPEC)
 def enter_fio(message):
+    user.user_id = message.chat.id
     keyboard_hider = types.ReplyKeyboardRemove()
     spec = message.text
     print('Spec - ' + spec)
