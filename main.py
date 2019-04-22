@@ -91,7 +91,7 @@ def person_foto(message):
     photo = message.photo[-1].file_id
     print('Passport foto - '+ photo)
     loader_dict.update({'passport_foto': photo})
-    bot.send_message(message.chat.id, 'Отправьте фото', reply_markup=keyboard)
+    bot.send_message(message.chat.id, 'Отправьте свое фото', reply_markup=keyboard)
     user.set_status(config.LAST_STEP)
 
 @bot.message_handler(func=lambda message: user.get_status(message.chat.id) == config.ENTER_DISTRICT)
@@ -109,7 +109,7 @@ def choose_district(message):
     fio = message.text
     print('Fio - ' + fio)
     loader_dict.update({'fio': fio})
-    markup_key = markup.reset()
+    markup_key = markup.district()
     bot.send_message(message.chat.id, 'Выберите ваш район', reply_markup=markup_key)
     user.set_status(config.ENTER_DISTRICT)
 
@@ -117,11 +117,11 @@ def choose_district(message):
 @bot.message_handler(func=lambda message: user.get_status(message.chat.id) == config.ENTER_SPEC)
 def enter_fio(message):
     user.user_id = message.chat.id
-    keyboard_hider = types.ReplyKeyboardRemove()
+    keyboard = markup.reset()
     spec = message.text
     print('Spec - ' + spec)
     loader_dict.update({'spec':spec})
-    bot.send_message(message.chat.id, 'Введите ФИО', reply_markup=keyboard_hider)
+    bot.send_message(message.chat.id, 'Введите ФИО', reply_markup=keyboard)
     user.set_status(config.ENTER_FIO)
     pass
 
