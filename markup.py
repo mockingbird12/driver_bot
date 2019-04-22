@@ -1,5 +1,6 @@
 from telebot import types
 
+
 def admin():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     admin_keys = ['Просмотр анкет']
@@ -20,18 +21,24 @@ def workers_markup():
 
 def special():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-    items = ['Водитель', 'Грузчик']
+    items = ['Водитель', 'Грузчик', 'Заново']
     for item in items: markup.add(item)
     return markup
 
 def district():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-    items = ['Дзержинский', 'Центральный']
+    items = ['Дзержинский', 'Центральный', 'Заново']
     for item in items: markup.add(item)
     return markup
 
 def main_menu():
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     items = ['Проверить статус', 'Зарегистрироваться', 'Удалить анкету']
+    for item in items: markup.add(item)
+    return markup
+
+def reset():
+    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+    items = ['Заново']
     for item in items: markup.add(item)
     return markup

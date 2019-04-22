@@ -78,7 +78,7 @@ class Loaders:
     conn.set_client_encoding('UTF8')
     cur = conn.cursor()
     sql = "CREATE TABLE IF NOT EXISTS loaders (id SERIAL PRIMARY KEY, user_id VARCHAR(20) UNIQUE, " \
-          "fio VARCHAR(20), district VARCHAR(40), passport_foto VARCHAR(80), person_foto VARCHAR(80), isAccept VARCHAR(20))"
+          "fio VARCHAR(20), district VARCHAR(40), passport_foto VARCHAR(140), person_foto VARCHAR(140), isAccept VARCHAR(20))"
     cur.execute(sql)
     conn.commit()
 
