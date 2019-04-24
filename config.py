@@ -1,5 +1,5 @@
 
-token = '411297683:AAGDRvzu9FCD0sviGuyA8GvdF5o2PGEJ660'
+token = ''
 
 START = '0'
 ENTER_SPEC = '1'
